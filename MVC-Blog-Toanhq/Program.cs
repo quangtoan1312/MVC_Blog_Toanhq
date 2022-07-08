@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MVC_Blog_Toanhq.Data;
+using MVC_Blog_Toanhq.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MVC_Blog_ToanhqContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MVC_Blog_ToanhqContext") ?? throw new InvalidOperationException("Connection string 'MVC_Blog_ToanhqContext' not found.")));
@@ -9,6 +11,13 @@ builder.Services.AddDbContext<MVC_Blog_ToanhqContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
