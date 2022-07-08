@@ -36,7 +36,17 @@
         </nav>
     </header>
 
-    @RenderBody()
+    <div class="row h-auto text-center" style="min-height:900px">
+        <div class="col col-lg-2 bg-light">
+            <nav class="navbar flex-column">
+                <a class="navbar-brand" asp-controller="Blogs" asp-action="Index">List</a>
+                <a class="navbar-brand" asp-controller="Blogs" asp-action="Create">New</a>
+                <a class="navbar-brand" asp-controller="Blogs" asp-action="Search">Search</a>
+            </nav>
+        </div>
+        @RenderBody()
+    </div>
+
 
     <footer class="border-top text-muted bg-black" style="min-height:66px">
         <div class="container text-center align-items-center ">

@@ -20,11 +20,30 @@ namespace MVC_Blog_Toanhq.Controllers
         }
 
         // GET: Blogs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-              return _context.Blog != null ? 
-                          View(await _context.Blog.ToListAsync()) :
-                          Problem("Entity set 'MVC_Blog_ToanhqContext.Blog'  is null.");
+            var blogs = from m in _context.Blog
+                         select m;
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                blogs = blogs.Where(s => s.Title!.Contains(id));
+            }
+
+            return View(await blogs.ToListAsync());
+        }
+
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var blogs = from m in _context.Blog
+                        select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                blogs = blogs.Where(s => s.Title!.Contains(searchString));
+            }
+
+            return View(await blogs.ToListAsync());
         }
 
         // GET: Blogs/Details/5
