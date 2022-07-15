@@ -14,6 +14,6 @@ namespace MVC_Blog_Toanhq.Data
         {
         }
 
-        public DbSet<MVC_Blog_Toanhq.Models.Blog>? Blog { get; set; }
+        public DbSet<MVC_Blog_Toanhq.Models.Blog> Blog { get; set; }
     }
 }

@@ -29,7 +29,7 @@
                             @Html.DisplayNameFor(model => model.Position)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IsPublic)
+                            @Html.DisplayNameFor(model => model.Public)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Category)
@@ -56,19 +56,20 @@
                                 @Html.DisplayFor(modelItem => item.Title)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Description)
+                                @Html.DisplayFor(modelItem => item.Category)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Detail)
+                                @if (item.Public)
+                                {
+                                    <p>Yes</p>
+                                }
+                                else
+                                {
+                                    <p>No</p>
+                                }
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Position)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IsPublic)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Category)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PublicDate)

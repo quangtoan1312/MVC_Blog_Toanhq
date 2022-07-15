@@ -4,106 +4,108 @@
     ViewData["Title"] = "Search";
 }
 
-<div class="col m-3 bg-light rounded-1">
-    <div class="card">
-        <div class="card-header">
-            <h2>Search Blog</h2>
-        </div>
-        <div class="card-body">
-            <form asp-controller="Blogs" asp-action="Search">
-                <div class="row">
-                    <div class="col col-lg-2">Title:</div>
-                    <div class="col">
-                        <input type="text" name="SearchString" />
+<div class="col">
+    <div class="row m-3 bg-light rounded-1">
+        <div class="card">
+            <div class="card-header">
+                <h2>Search Blog</h2>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Blogs" asp-action="Search">
+                    <div class="row">
+                        <div class="col col-lg-2">Title:</div>
+                        <div class="col">
+                            <input type="text" name="SearchString" />
+                        </div>
                     </div>
-                </div>
-                <input type="submit" value="Filter" />
-            </form>
+                    <input type="submit" value="Filter" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row m-3 bg-light rounded-1">
+        <div class="container">
+            <h2 class="my-2">New Blog</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Detail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Position)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsPublic)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PublicDate)
+                        </th>
+                        <th>
+                            Edit
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Detail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsPublic)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublicDate)
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary active" role="button" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-danger active" role="button" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-<div class="col m-3 bg-light rounded-1">
-    <div class="container">
-        <h2 class="my-2">New Blog</h2>
-        <p>
-            <a asp-action="Create">Create New</a>
-        </p>
 
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        #
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Detail)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Position)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsPublic)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Category)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PublicDate)
-                    </th>
-                    <th>
-                        Edit
-                    </th>
-                    <th>
-                        Delete
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Detail)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Position)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsPublic)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PublicDate)
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-primary active" role="button" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-danger active" role="button" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+
+
+
 
 
